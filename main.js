@@ -181,19 +181,19 @@ async function main() {
 
   // 构建通知内容（放在 secret 更新之后、错误抛出之前，确保始终执行）
   const title = `酷狗签到${hasError ? '异常' : '成功'} ${date}`
-  let content = `📅 日期: ${date}\n`
-  content += `📊 账号数: ${notifyResults.length}\n`
+  let content = `日期: ${date}\n`
+  content += `账号数: ${notifyResults.length}\n`
   const successCount = notifyResults.filter(r => r.status === '成功').length
   const failCount = notifyResults.length - successCount
-  content += `✅ 成功: ${successCount}  ❌ 失败: ${failCount}\n`
+  content += `成功: ${successCount}  失败: ${failCount}\n`
 
   for (const r of notifyResults) {
     content += `\n【${r.nickname}】\n`
-    content += `  🎵 听歌领取: ${r.listen}\n`
-    content += `  🎁 VIP领取: ${r.vipClaim} 次\n`
-    content += `  ⏰ VIP到期: ${r.vipExpiry}\n`
+    content += `  听歌领取: ${r.listen}\n`
+    content += `  VIP领取: ${r.vipClaim} 次\n`
+    content += `  VIP到期: ${r.vipExpiry}\n`
     if (r.error) {
-      content += `  ⚠️ 错误: ${r.error}\n`
+      content += `  错误: ${r.error}\n`
     }
   }
 
